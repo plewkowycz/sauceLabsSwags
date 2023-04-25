@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cypress open"
+    "test": "cypress open",
+    "report:merge": "npx mochawesome-merge cypress/results/*.json -o cypress/report.json",
+    "report:generate": "npx marge cypress/report.json --reportDir results --assetsDir results/assets --reportPageTitle index.html --charts true"
   },
   "keywords": [],
   "author": "",
