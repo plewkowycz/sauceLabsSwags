@@ -7,11 +7,7 @@ describe("Sauce Demo Invalid Login", () => {
 
     cy.login(user_incorrect, password_incorrect_long);
 
-    cy.testid("#user-name").type("invalid_user");
-    cy.testid("#password").type("invalid_password");
-    cy.testid("#login-button").click();
-
-    cy.testid(".error-message-container")
+    cy.testid("error")
       .should("be.visible")
       .and(
         "contain",
