@@ -25,7 +25,7 @@ We created an extended page to view Cypress tests by using GHA and actions like 
 
 #### Test Cases
 
-Purchase flow tests case can be found under the `test-cases` directory.
+Purchases flow tests cases can be found under the `test-cases` directory.
 
 #### Cypress
 
@@ -33,7 +33,7 @@ As an example of how we can utilize Cypress, we added a custom Cypress command f
 
 ### Testing Approach
 
-The chosen testing approach uses the Cypress testing framework to write and run end-to-end tests for the Sauce Demo website. The tests cover the purchase flow. As extension of the task login with invalid credentials and removing an item from the cart were added.
+The chosen testing approach uses the Cypress testing framework to write and run end-to-end tests for the Sauce Demo website. The tests cover the successful purchase flow, a negative scenario with missing fields during the purchase flow, login with invalid credentials, and removing an item from the cart. The last two were additional tasks.
 
 The GitHub Actions CI/CD pipeline ensures that the tests are executed automatically whenever changes are pushed to the repository, providing quick feedback on any issues that might be introduced.
 
