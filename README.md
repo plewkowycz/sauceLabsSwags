@@ -84,3 +84,4 @@ Using GHA and actions like:
 In folder test_cases we can find exported test cases created in Test Rail.
 
 In folder us_and bugs we can find exported bugs and US status from JIRA.
+# sauceLabsSwags
