@@ -2,16 +2,12 @@ describe("Sauce Demo Invalid Login", () => {
   it("Displays an error message for invalid credentials", () => {
     cy.visit("https://www.saucedemo.com");
 
-    const user_incorrect = "cat";
+    const user_correct = "standard_user_incorrect";
     const password_incorrect_long = "catdogcat";
 
-    cy.login(user_incorrect, password_incorrect_long);
+    cy.login(user_correct, password_incorrect_long);
 
-    cy.testid("#user-name").type("invalid_user");
-    cy.testid("#password").type("invalid_password");
-    cy.testid("#login-button").click();
-
-    cy.testid(".error-message-container")
+    cy.testid("error")
       .should("be.visible")
       .and(
         "contain",

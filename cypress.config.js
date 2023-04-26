@@ -11,11 +11,14 @@ module.exports = defineConfig({
     html: true,
     json: true,
   },
-  chromeWebSecurity: false,
+
   video: true,
   defaultCommandTimeout: 6000,
   pageLoadTimeout: 120000,
   e2e: {
-    baseUrl: "https://www.saucedemo.com",
+    chromeWebSecurity: false,
+    setupNodeEvents(on, config) {
+      // implement node event listeners here
+    },
   },
 });

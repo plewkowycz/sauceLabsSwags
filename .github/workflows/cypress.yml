@@ -25,7 +25,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5
       - name: Copy test execution videos and screenshots
-        if: always ()
+        if: failure ()
         run: |
           mkdir results
           cp -r cypress/videos results/videos
@@ -58,5 +58,5 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             Test results of cypress tests can be found here:
-            https://plewkowycz.github.io/technical_task_qa_app/${{ github.head_ref }}/${{ github.run_id }}/report.html
+            https://plewkowycz.github.io/sauceLabsSwags/${{ github.head_ref }}/${{ github.run_id }}/report.html
           reactions: "eyes"
