@@ -1,37 +1,66 @@
+const locators = {
+  username: "[data-test=username]",
+  password: "[data-test=password]",
+  loginButton: "[data-test=login-button]",
+  addToCart: "[data-test=add-to-cart-sauce-labs-backpack]",
+  shoppingCart: "#shopping_cart_container",
+  cartItem: ".cart_item",
+  checkout: "[data-test=checkout]",
+  continue: "[data-test=continue]",
+  error: "[data-test=error]",
+  firstName: "[data-test=firstName]",
+  lastName: "[data-test=lastName]",
+  postalCode: "[data-test=postalCode]",
+};
+
+const userData = {
+  validUsername: "standard_user",
+  validPassword: "secret_sauce",
+  firstName: "Jon",
+  lastName: "Snow",
+  postalCode: "12345",
+};
+
+const errorMessages = {
+  firstNameRequired: "Error: First Name is required",
+  lastNameRequired: "Error: Last Name is required",
+  postalCodeRequired: "Error: Postal Code is required",
+};
+
 describe("Sauce Demo Purchase Flow - Missing Required Fields", () => {
   beforeEach(() => {
     cy.visit("https://www.saucedemo.com");
 
-    cy.testid("username").type("standard_user");
-    cy.testid("password").type("secret_sauce");
-    cy.testid("login-button").click();
+    cy.get(locators.username).type(userData.validUsername);
+    cy.get(locators.password).type(userData.validPassword);
+    cy.get(locators.loginButton).click();
 
-    cy.testid("add-to-cart-sauce-labs-backpack").click();
+    cy.get(locators.addToCart).click();
 
-    cy.get("#shopping_cart_container").click();
+    cy.get(locators.shoppingCart).click();
 
-    cy.get(".cart_item")
+    cy.get(locators.cartItem)
       .should("have.length", 1)
       .and("contain", "Sauce Labs Backpack");
 
-    cy.testid("checkout").click();
+    cy.get(locators.checkout).click();
   });
 
   it("Cannot complete purchase flow with missing required fields", () => {
-    cy.testid("continue").click();
-    cy.testid("error").should("contain", "Error: First Name is required");
+    cy.get(locators.continue).click();
+    cy.get(locators.error).should("contain", errorMessages.firstNameRequired);
 
-    cy.testid("firstName").type("Jon");
-    cy.testid("continue").click();
-    cy.testid("error").should("contain", "Error: Last Name is required");
+    cy.get(locators.firstName).type(userData.firstName);
+    cy.get(locators.continue).click();
+    cy.get(locators.error).should("contain", errorMessages.lastNameRequired);
 
-    cy.testid("lastName").type("Snow");
-    cy.testid("continue").click();
-    cy.testid("error").should("contain", "Error: Postal Code is required");
+    cy.get(locators.lastName).type(userData.lastName);
+    cy.get(locators.continue).click();
+    cy.get(locators.error).should("contain", errorMessages.postalCodeRequired);
 
-    cy.testid("postalCode").type("12345");
-    cy.testid("lastName").clear();
-    cy.testid("continue").click();
-    cy.testid("error").should("contain", "Error: Last Name is required");
+    cy.get(locators.postalCode).type(userData.postalCode);
+    cy.get(locators.lastName).clear();
+    cy.get(locators.continue).click();
+    cy.get(locators.error).should("contain", errorMessages.lastNameRequired);
   });
 });

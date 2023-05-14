@@ -31,6 +31,13 @@ Purchases flow tests cases can be found under the `test-cases` directory.
 
 As an example of how we can utilize Cypress, we added a custom Cypress command for login and simplified the solution for using `testid` selectors.
 
+In addition to that we created variables for locators, error/expected messages and input data.
+It gives multiple benefits like:
+
+1. You make the tests more maintainable: If any locator, user data, or error message changes, you can easily update it in the respective object without having to search through the entire test code.
+2. You make the tests more readable: By using descriptive variable names, it becomes easier for other developers to understand the purpose of each locator or data item.
+3. You reduce the risk of errors: Hardcoding values throughout the test code increases the likelihood of errors and inconsistencies. Using variables ensures that the values are consistent across the entire test suite.
+
 ### Testing Approach
 
 The chosen testing approach uses the Cypress testing framework to write and run end-to-end tests for the Sauce Demo website. The tests cover the successful purchase flow, a negative scenario with missing fields during the purchase flow, login with invalid credentials, and removing an item from the cart. The last two were additional tasks.
